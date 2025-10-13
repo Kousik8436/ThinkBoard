@@ -1,0 +1,27 @@
+{
+  "name": "simple-mern-stack-understanding",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:backend": "node backend/src/server.js",
+    "start:frontend": "npm run dev --prefix frontend",
+    "start": "npm run start:backend & npm run start:frontend",
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kousik8436/ThinkBoard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Kousik8436/ThinkBoard/issues"
+  },
+  "homepage": "https://github.com/Kousik8436/ThinkBoard#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

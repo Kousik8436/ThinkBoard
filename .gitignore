@@ -24,6 +24,8 @@ dist-ssr
 *.sw?
 
 .env
+backend/.env
+frontend/.env
 
 # Ensure consistent line endings
 * text=auto
