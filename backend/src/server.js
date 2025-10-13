@@ -27,13 +27,13 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 // Middleware
-if (process.env.NODE_ENV !== "production") {
-  app.use(
-    cors({
-      origin: "http://localhost:5173",
-    })
-  );
-}
+app.use(
+  cors({
+    origin: process.env.NODE_ENV === "production" 
+      ? "https://your-frontend-service-name.onrender.com" 
+      : "http://localhost:5173",
+  })
+);
 
 app.use(express.json());
 // app.use(rateLimiter);
