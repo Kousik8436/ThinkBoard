@@ -7,7 +7,6 @@ import cors from "cors";
 
 import notesRoutes from "./routes/notesRoutes.js";
 import { connectDB } from "./config/db.js";
-import rateLimiter from "./middleware/rateLimiter.js";
 
 // Resolve __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -27,19 +26,14 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 // Middleware
-app.use(
-  cors({
-    origin: process.env.NODE_ENV === "production" 
-      ? "https://your-frontend-service-name.onrender.com" 
-      : "http://localhost:5173",
-  })
-);
-
+app.use(cors());
 app.use(express.json());
-// app.use(rateLimiter);
 
 // API routes
-app.use("/api/notes", notesRoutes);
+app.use("/api/notes", (req, res, next) => {
+  console.log(`API call: ${req.method} ${req.path}`);
+  next();
+}, notesRoutes);
 
 // Serve frontend in production
 if (process.env.NODE_ENV === "production") {
